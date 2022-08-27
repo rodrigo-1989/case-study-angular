@@ -1,0 +1,25 @@
+<mat-card >
+    <mat-card-header>
+        <mat-card-title>{{ producto.nombre }}</mat-card-title>
+        <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="producto.imagen" alt="">
+    <mat-card-content>
+        <strong>${{ producto.precio }} <small class="ml">Existentes: {{ producto.existentes
+                }}</small></strong>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-mini-fab color="accent" (click)="agregar(-1)" [disabled]="cantidad<1">
+            <mat-icon>remove</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" (click)="agregar(1)" class="ml"
+            [disabled]="cantidad >= producto.existentes">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-button color="accent"
+            (click)="agregarAlCarrito(producto)"
+            [disabled]="cantidad<1">Agregar al
+            <mat-icon mat-list-icon>shopping_cart</mat-icon><span class="ml">{{ cantidad }}</span>
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,34 @@
+<div class="content-center">
+    <div *ngFor="let producto of productos" class="container">
+        <mat-card class="card">
+            <mat-card-title>{{ producto.nombre }}</mat-card-title>
+            <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
+            <mat-card-title-group>
+                <mat-card-content>
+                    <img mat-card-md-image [src]="producto.imagen" class="img-formato">
+                </mat-card-content>
+                <mat-card-title-group>
+                    <button mat-button mat-fab color="" (click)="addRemove(producto.id,1)" [disabled]="cargando">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                    <span class="contador">{{ producto.existentes }}</span>
+                    <button mat-button mat-fab color="" [disabled]="producto.existentes < 1 || cargando"
+                        (click)="addRemove(producto.id,-1)">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                </mat-card-title-group>
+                <button mat-button mat-fab color="" (click)="enviarCambio(producto)" [disabled]="cargando">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </mat-card-title-group>
+            <mat-card-actions>
+                <button mat-button (click)="editar(producto)" [disabled]="cargando">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button color="warn" (click)="eliminar(producto)" [disabled]="cargando">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

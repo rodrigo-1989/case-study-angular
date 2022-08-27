@@ -1,0 +1,21 @@
+<div>
+    <h2 fxLayoutAlign="center center">Carrito de compras</h2>
+    <hr>
+
+    <div fxLayout="column" fxLayoutGap="250" fxLayoutAlign="center center" class="mt">
+
+        <div fxLayout="row wrap" fxLayoutGap="100px" fxLayoutGap.md="100px" fxLayout.xs="column" fxLayout.sm="column">
+            <div fxFlex.xs="320px" fxFlex.sm="320px" fxFlex.md="70px" *ngFor="let compra of compras"
+                class="animate__animated animate__rubberBand">
+                <app-tarjeta-carrito [compra]="compra" (onIdBorrar)="borrarCompra( $event )"
+                    (onCambiarCantidad)="cambiarCantidad( $event )"></app-tarjeta-carrito>
+            </div>
+        </div>
+        <div>
+            <button mat-button color="basic" class="borde" (click)="comprar()" [disabled]="compras.length < 1">
+                Comprar
+                <mat-icon mat-list-icon>shopping_bag</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
