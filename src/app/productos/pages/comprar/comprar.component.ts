@@ -44,11 +44,3 @@ export class ComprarComponent implements OnInit, OnDestroy {
   }
 
 }
-    //Crear Ususario
-    // const body = {
-    //   "email": "jrodrigojulio@hotmail.com",
-    //   "username": "JRRJ",
-    //   "name": "J. Rodrigo",
-    //   "password": "12345"
-    // }
-    // return this.http.post<any>(`http://localhost:8000/usuarios/crear`,body);

@@ -1,45 +1,29 @@
-<form class="login100-form" autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="login()">
-                
-    <span class="login100-form-title p-b-49">
-        Login
-    </span>
+<form [formGroup]="miFormulario" (ngSubmit)="login()"  fxLayoutAlign="center center" >
 
-    <div class="wrap-input100 m-b-23">
-        <span class="label-input100">Email</span>
-        <input class="input100"
-               type="email"
-                formControlName="email"
-               placeholder="Ingrese su email">
-        <span class="focus-input100"></span>
-    </div>
-
-    <div class="wrap-input100">
-        <span class="label-input100">Password</span>
-        <input class="input100"
-               type="password"
-                formControlName="password"
-               placeholder="Ingrese su contraseña">
-        <span class="focus-input100"></span>
-    </div>
+    <div fxLayout="column" fxFlex="30"fxLayoutGap="20px" >
+        <span class="login100-form-title p-b-49 p-t-90 text-w">Login</span>
+        <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <input type="text" formControlName="username" matInput required placeholder="Ingrese su usuario">
+        </mat-form-field>
     
-    <div class="text-right p-t-8 p-b-31"></div>
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input type="password" formControlName="password" matInput required placeholder="Ingrese su contraseña">
+        </mat-form-field>
     
-    <div class="container-login100-form-btn">
-        <div class="wrap-login100-form-btn">
-            <div class="login100-form-bgbtn"></div>
-            <button class="login100-form-btn" type="submit" [disabled]="miFormulario.invalid">
-                Login
-            </button>
+        <button mat-raised-button color="primary" (click)="login()" [disabled]="miFormulario.invalid || cargando">
+            <mat-icon>login</mat-icon> Login
+        </button>
+    
+        <div class="flex-col-c p-t-60">
+            <span class="txt1 p-b-17">
+                ¿No tienes cuenta?
+            </span>
+            <a routerLink="/auth/registro"  >
+                Crear una aquí
+            </a>
         </div>
     </div>
-
-    <div class="flex-col-c p-t-60">
-        <span class="txt1 p-b-17">
-            ¿No tienes cuenta?
-        </span>
-
-        <a routerLink="/auth/registro" class="txt2">
-            Crear una aquí
-        </a>
-    </div>
 </form>
+<mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>

@@ -5,21 +5,23 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { MainComponent } from './pages/main/main.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material/material.module';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    MainComponent
+    HomeComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MaterialModule
   ]
 })
 export class AuthModule { }

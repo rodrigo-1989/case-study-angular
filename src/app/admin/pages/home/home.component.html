@@ -1,0 +1,71 @@
+
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+            <span>Menú</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list *ngIf="usuario.rol.includes('ROLE_ADMIN')">
+            <button mat-list-item [matMenuTriggerFor]="productos" >
+                <mat-icon mat-list-icon>precision_manufacturing</mat-icon>
+                <span>Productos</span>
+            </button>
+        </mat-nav-list>
+
+        <mat-nav-list>
+            <button mat-list-item [matMenuTriggerFor]="tienda">
+                <mat-icon mat-list-icon>store</mat-icon>
+                <span>Tienda</span>
+            </button>
+        </mat-nav-list>
+
+        <mat-menu #tienda="matMenu">
+            <button mat-menu-item routerLink="/productos" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>shopping_bag</mat-icon> <span>Comprar</span>
+            </button>
+            <button mat-menu-item routerLink="/productos/carrito" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>shopping_cart</mat-icon><span>Carrito</span>
+            </button>
+        </mat-menu>
+
+        <mat-menu #productos="matMenu">
+            <button mat-menu-item routerLink="/admin/listar" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>shopping_bag</mat-icon> <span>Ver productos</span>
+            </button>
+            <button mat-menu-item routerLink="/admin/nuevo" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>add_circle</mat-icon><span>Crear nuevo</span>
+            </button>
+        </mat-menu>
+
+    </mat-sidenav>
+
+    <mat-toolbar>
+
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <strong>{{ usuario.nombre }}</strong>
+        <span class="spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="menuUsuario">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menuUsuario="matMenu">
+            <button mat-menu-item routerLink="./auth/editar" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>manage_accounts</mat-icon> <span>Editar usuario</span>
+            </button>
+            <button mat-menu-item routerLink="./auth/login" (click)="logout()">
+                <mat-icon mat-list-icon>logout</mat-icon><span>Logout</span>
+            </button>
+        </mat-menu>
+
+        <img [src]="usuario.imagen" class="img-user">
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</mat-sidenav-container>

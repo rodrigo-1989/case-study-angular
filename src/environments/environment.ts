@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080',
+  baseUrl: 'http://localhost:8000',
+  urlCloudinary:'https://api.cloudinary.com/v1_1/djxpuwlz0/image/upload',
 };
 
 /*

@@ -8,6 +8,7 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TarjetaProductoComponent } from './components/tarjeta-producto/tarjeta-producto.component';
 import { TarjetaCarritoComponent } from './components/tarjeta-carrito/tarjeta-carrito.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TarjetaCarritoComponent } from './components/tarjeta-carrito/tarjeta-ca
     ComprarComponent,
     CarritoComponent,
     TarjetaProductoComponent,
-    TarjetaCarritoComponent
+    TarjetaCarritoComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

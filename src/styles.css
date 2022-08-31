@@ -2919,7 +2919,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex:1 1 auto;
 }
 .container{
-  margin: 20px;
+  margin: 10px;
 }
 .img-formato{
   border-radius: 50%;
@@ -2959,4 +2959,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   right: 0;
   top: 0;
   bottom: 0;
+}
+
+.img-user{
+  border-radius: 50%;
+  border: PowderBlue 2px solid;
+  height: 45px;
+  width: 45px;
 }

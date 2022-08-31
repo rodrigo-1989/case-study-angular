@@ -1,59 +1,13 @@
-<mat-sidenav-container fullscreen >
 
-    <mat-sidenav #sidenav mode="push">
-        <mat-toolbar color="primary">
-            <span>Menú</span>
-            <span class="spacer"></span>
-            <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-        </mat-toolbar>
-
-        <mat-nav-list>
-            <button  mat-list-item [matMenuTriggerFor]="productos">
-                <mat-icon mat-list-icon>precision_manufacturing</mat-icon>
-                <span>Productos</span>
-            </button>
-        </mat-nav-list>
-        
-        <mat-nav-list >
-            <button  mat-list-item [matMenuTriggerFor]="tienda">
-                <mat-icon mat-list-icon>store</mat-icon>
-                <span>Tienda</span>
-            </button>
-        </mat-nav-list>
-
-        <mat-menu #tienda="matMenu">
-            <button mat-menu-item routerLink="./productos" (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>shopping_bag</mat-icon> <span>Comprar</span>
-            </button>
-            <button mat-menu-item routerLink="./productos/carrito" (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>shopping_cart</mat-icon><span>Carrito</span>
-            </button>
-        </mat-menu>
-
-        <mat-menu #productos="matMenu">
-            <button mat-menu-item routerLink="./admin/listar" (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>shopping_bag</mat-icon> <span>Ver productos</span>
-            </button>
-            <button mat-menu-item routerLink="./admin/nuevo" (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>add_circle</mat-icon><span>Crear nuevo</span>
-            </button>
-        </mat-menu>
-
-    </mat-sidenav>
-
-    <mat-toolbar>
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <span class="spacer"></span>
-        <button mat-button>
-            <mat-icon mat-list-icon>logout</mat-icon><span>Salir</span>
-        </button>
-    </mat-toolbar>
-
-    <div class="container">
+    <div class=" container">
         <router-outlet></router-outlet>
     </div>
-</mat-sidenav-container>
+    
+    <!-- <div fxLayout="row wrap" fxLayoutAlign="center" fLayoutGap="20px" fxLayout.xs="column">
+
+        <div fxFlex="30" fxFlex.lg="15" fxFlex.sm="30" *ngFor="let producto of productos"
+            class="animate__animated animate__bounce"> -->
+            <!-- <app-productos [productos]="productos"></app-productos> -->
+        <!-- </div>
+    </div> -->
+

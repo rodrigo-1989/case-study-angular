@@ -49,7 +49,40 @@ export interface Compra {
     original_filename: string;
 }
 
+export interface Token {
+    access_token: string;
+    token_type:   string;
+    expires_in:   number;
+    imagen:       string;
+    usuario:      string;
+    nombre:       string;
+    rol:          string[];
+    id:           string;
+}
+
+export interface Usuario {
+    id:       string | null;
+    name:     string;
+    username: string;
+    password: string;
+    email:    string;
+    image:    string;
+    intentos: number;
+    createAt: Date;
+    enabled:  boolean;
+    roles:    string[];
+    idImage:  string;
+}
+
 export interface TokenError {
     error:             string;
     error_description: string;
+}
+
+export interface AuthUsuario {
+    id:      string;
+    nombre:  string;
+    usuario: string;
+    imagen:   string;
+    rol:     string[];
 }
