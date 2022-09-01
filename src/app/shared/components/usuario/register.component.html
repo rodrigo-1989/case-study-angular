@@ -18,11 +18,11 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Contraseña</mat-label>
-            <input type="password" formControlName="password" (input)="verificarPassword()" matInput required placeholder="Ingrese su contraseña">
+            <input type="password" formControlName="password" matInput required placeholder="Ingrese su contraseña">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Verificar contraseña</mat-label>
-            <input type="password" formControlName="password2" (input)="verificarPassword()" matInput required placeholder="verifique su contraseña">
+            <input type="password" formControlName="password2" matInput required placeholder="verifique su contraseña">
         </mat-form-field>
 
         <button mat-raised-button color="primary" (click)="registro()" [disabled]="miFormulario.invalid || cargando">

@@ -8,6 +8,7 @@ import { ListarProductosComponent } from './pages/listar-productos/listar-produc
 import { NuevoProductoComponent } from './pages/nuevo-producto/nuevo-producto.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { HomeComponent } from './pages/home/home.component';
     FlexLayoutModule,
     MaterialModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

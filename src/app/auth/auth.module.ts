@@ -8,20 +8,24 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
+import { ListadoComponent } from './pages/listado/listado.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ListadoComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

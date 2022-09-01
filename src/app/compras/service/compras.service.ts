@@ -16,12 +16,7 @@ export class AdminService {
   buscarUsuario(id:string):Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/usuarios/${id}`)
   }
-  editarImagen(usuario:Usuario,id:string):Observable<Dto>{
-   const headers = {headers: new HttpHeaders({
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem('token')!)}`
-    })};
-    return this.http.post<Dto>(`${this.baseUrl}/cloudinary/editarImagenU/${id}`,usuario, headers);
-  }
+
   editarUsuario(usuario:Usuario,id:string):Observable<any>{
     return this.http.put<any>(`${this.baseUrl}/usuarios/${id}`,usuario)
   }

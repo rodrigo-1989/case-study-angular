@@ -2918,9 +2918,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .spacer{
   flex:1 1 auto;
 }
-.container{
-  margin: 10px;
-}
 .img-formato{
   border-radius: 50%;
   border: 2px solid #a64bf4;
@@ -2966,4 +2963,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border: PowderBlue 2px solid;
   height: 45px;
   width: 45px;
+}
+.img-product{
+  border-radius: 50%;
+  border: rgba(147, 12, 126) 2px solid;
+  height: 45px;
+  width: 45px;
+}
+
+.img-edit{
+  border-radius: 5%;
+  border: PowderBlue 3px solid;
 }

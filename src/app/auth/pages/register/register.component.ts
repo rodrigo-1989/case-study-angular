@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { Usuario } from '../../../interfaces/respuesta.interface';
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styles: [`.text-w{ color:aliceblue; }`
   ]
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent{
   cargando: boolean = false;
   usuario: Usuario = {
     id: '', name: '', username: '', password: '', email: '',
@@ -29,10 +29,6 @@ export class RegisterComponent implements OnInit{
     usuario: ['julio', [Validators.required, Validators.minLength(5)]],
   });
   constructor(private fb: FormBuilder, private authService: AuthService,private idRoute: ActivatedRoute,private router:Router) { }
-
-ngOnInit(): void {
-
-}
 
   registro() {
     this.cargando = true;
@@ -58,31 +54,3 @@ ngOnInit(): void {
       : this.miFormulario.get('password2')?.setErrors({ noEsIgual: true });
   }
 }
-
-
-// if (this.idRoute.snapshot.paramMap.get('id')) {
-//   this.authService.buscarUsuario(this.idRoute.snapshot.paramMap.get('id')!)
-//     .subscribe(r => {
-//       this.usuario = r.usuario!;
-//       this.miFormulario.reset({
-//         nombre: this.usuario.name, password:this.usuario.password,password2:this.usuario.password,
-//         email:this.usuario.email,usuario:this.usuario.username
-//       })
-//     });
-// }
-
-
-
-// if(id){
-//   if (this.cambiarImagen)
-//   this.authService.editarImagen(this.usuario, this.usuario.id!).subscribe();
-//   this.authService.editarUsuario(this.usuario, id)
-//   .subscribe(resp => {
-//     if (resp.ok) {
-//       Swal.fire('Exito!', `Usuario ${this.usuario.username} editado con exito`, 'success');
-//       this.router.navigate(['/productos/comprar']);
-//     } else {
-//       Swal.fire('Error, ', resp.mensaje, 'error');
-//     }
-//     this.cargando = false;
-//   })

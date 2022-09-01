@@ -1,0 +1,11 @@
+<form [formGroup]="miFormulario">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <input type="text" placeholder="Buscar..." matInput formControlName="nombre" [matAutocomplete]="auto"
+            (input)="buscar()">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="opcionSelecionada( $event )">
+            <mat-option *ngFor="let producto of productos" [value]="producto">
+                {{ producto.nombre }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

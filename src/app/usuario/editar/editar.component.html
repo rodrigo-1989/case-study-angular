@@ -1,0 +1,57 @@
+<div class="container justify-content-center text-center row mt-5">
+    <span class="login100-form-title p-b-49 p-t-30 text-white">Editar a {{ usuario.usuario }}</span>
+    <div class="col-5 ">
+        <div class="row justify-content-center">
+            <div *ngIf="!cambiarImagen">
+                <img [src]="usuario.imagen" class="img-fluid img-edit col-6 ">
+                <br>
+                <div>
+                    <button mat-raised-button mat-mini-fab class=" position-absolute top-1 start-1 translate-middle-y"
+                        [disabled]="cargando" (click)="cambiar()" color="primary">
+                        <mat-icon>change_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="cambiarImagen" class="col-9 justify-content-center">
+                <ngx-dropzone (change)="seleccionaImagen( $event )">
+                    <ngx-dropzone-label>Click o arrastra tu imagen <mat-icon>insert_photo</mat-icon>
+                    </ngx-dropzone-label>
+                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                        [removable]="true" (removed)="quitarImagen(f)">
+                    </ngx-dropzone-image-preview>
+                </ngx-dropzone>
+                <br>
+                <div>
+                    <button mat-raised-button (click)="subirImagen()"
+                        [disabled]="cargando || files.length < 1 || idFoto!=='' " color="primary">
+                        Subir foto <mat-icon>file_upload</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <form [formGroup]="miFormulario" (ngSubmit)="editar()" class="row mt-3">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input type="text" formControlName="nombre" matInput required placeholder="Ingrese su nombre">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input type="password" formControlName="password" (input)="verificarPassword()" matInput
+                    placeholder="Ingrese su contraseña">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Verificar contraseña</mat-label>
+                <input type="password" formControlName="password2" matInput (input)="verificarPassword()"
+                    placeholder="verifique su contraseña">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="editar()" [disabled]="miFormulario.invalid || cargando">
+                <mat-icon>edit</mat-icon> Editar
+            </button>
+
+        </form>
+
+    </div>
+</div>
+<br><br>
+<mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>

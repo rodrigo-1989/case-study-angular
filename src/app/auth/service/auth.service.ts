@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Usuario, AuthUsuario } from '../../interfaces/respuesta.interface';
+import { Usuario, AuthUsuario, Dto } from '../../interfaces/respuesta.interface';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class AuthService {
   private _usuario: AuthUsuario = JSON.parse(localStorage.getItem('usuario')!);
 
   get usuario() {
-    return { ...this._usuario }
+    return this._usuario 
   }
 
   login(user: string, pass: string): Observable<any> {
@@ -32,8 +32,8 @@ export class AuthService {
       .pipe(
         tap(res => {
           if (res.access_token) {
-            const { id, nombre, usuario, imagen, rol } = res;
-            this._usuario = { id, nombre, usuario, imagen, rol }
+            const { id, nombre, usuario, imagen, rol, email } = res;
+            this._usuario = { id, nombre, usuario, imagen, rol, correo:email }
             localStorage.setItem('token', JSON.stringify(res.access_token));
             localStorage.setItem('usuario', JSON.stringify(this._usuario));
           }
@@ -54,5 +54,13 @@ export class AuthService {
 
   logout(){
     localStorage.clear();
+  }
+
+  listarProductos(): Observable<Dto> {
+    return this.http.get<Dto>(`${this.baseUrl}/productos`)
+  }
+
+  listarParecidos(query:string): Observable<Dto> {
+    return this.http.get<Dto>(`${this.baseUrl}/productos/buscarParecidos/${query}`)
   }
 }

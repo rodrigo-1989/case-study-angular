@@ -64,14 +64,14 @@ export interface Usuario {
     id:       string | null;
     name:     string;
     username: string;
-    password: string;
+    password: string | null;
     email:    string;
-    image:    string;
+    image:    string | null;
     intentos: number;
     createAt: Date;
     enabled:  boolean;
     roles:    string[];
-    idImage:  string;
+    idImage:  string | null;
 }
 
 export interface TokenError {
@@ -83,6 +83,7 @@ export interface AuthUsuario {
     id:      string;
     nombre:  string;
     usuario: string;
-    imagen:   string;
+    imagen:  string;
     rol:     string[];
+    correo:  string;
 }

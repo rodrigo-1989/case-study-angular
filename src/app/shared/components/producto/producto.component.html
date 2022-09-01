@@ -1,0 +1,13 @@
+<div class=" mt-3 mb-1  animate__animated  animate__fadeIn">
+
+    <mat-card>
+        <mat-card-title-group>
+            <mat-card-title>{{ producto.nombre }}</mat-card-title>
+            <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
+            <img mat-card-md-image [src]="producto.imagen" class="img-product">
+        </mat-card-title-group>
+        <mat-card-content>
+            <h1>{{ producto.precio | currency}} </h1>
+        </mat-card-content>
+    </mat-card>
+</div>

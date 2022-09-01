@@ -10,7 +10,7 @@ export class ValidarAdminGuard implements CanActivate, CanLoad {
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(): Observable<boolean> | boolean {
-    if (this.authService.usuario.rol.includes('ROLE_ADMIN'))
+    if (this.authService.usuario.rol.includes('ROLE_COMPRAS'))
       return true;
     else {
       this.router.navigateByUrl('/productos')
@@ -19,7 +19,7 @@ export class ValidarAdminGuard implements CanActivate, CanLoad {
 
   }
   canLoad(): Observable<boolean> | boolean {
-    if (this.authService.usuario.rol.includes('ROLE_ADMIN'))
+    if (this.authService.usuario.rol.includes('ROLE_COMPRAS'))
       return true;
     else {
       this.router.navigateByUrl('/productos')

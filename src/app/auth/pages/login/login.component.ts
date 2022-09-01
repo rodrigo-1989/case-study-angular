@@ -15,7 +15,7 @@ export class LoginComponent  {
   cargando: boolean = false;
   miFormulario: FormGroup = this.fb.group({
     username: ['rodrigo',[Validators.required,] ],
-    password: ['12345',[Validators.required, Validators.minLength(5)] ]
+    password: ['12345',[Validators.required] ]
   });
 
   constructor(private fb:FormBuilder,private authService:AuthService,private router:Router) { }

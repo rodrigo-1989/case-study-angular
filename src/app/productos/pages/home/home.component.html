@@ -1,4 +1,3 @@
-<p>home works!</p>
 <mat-sidenav-container fullscreen>
 
     <mat-sidenav #sidenav mode="push">
@@ -10,7 +9,7 @@
             </button>
         </mat-toolbar>
 
-        <mat-nav-list  *ngIf="usuario.rol.includes('ROLE_ADMIN')">
+        <mat-nav-list  *ngIf="usuario.rol.includes('ROLE_COMPRAS')">
             <button mat-list-item [matMenuTriggerFor]="productos">
                 <mat-icon mat-list-icon>precision_manufacturing</mat-icon>
                 <span>Productos</span>
@@ -57,7 +56,7 @@
             <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menuUsuario="matMenu">
-            <button mat-menu-item routerLink="./auth/editar" (click)="sidenav.toggle()">
+            <button mat-menu-item routerLink="/usuario">
                 <mat-icon mat-list-icon>manage_accounts</mat-icon> <span>Editar usuario</span>
             </button>
             <button mat-menu-item routerLink="./auth/login" (click)="logout()">

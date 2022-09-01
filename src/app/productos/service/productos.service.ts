@@ -42,8 +42,8 @@ export class ProductosService{
     return this.http.post<Dto>(`${this.baseUrl}productos`,body,this.headers);
   }
 
-  editarProducto({nombre,descripcion,precio,existentes}:Producto,id:string): Observable<Dto> {
-    const body = { nombre,descripcion,precio,existentes } 
+  editarProducto({nombre,descripcion,precio,existentes,imagen,idImagen}:Producto,id:string): Observable<Dto> {
+    const body = { nombre,descripcion,precio,existentes,imagen,idImagen } 
     return this.http.put<Dto>(`${this.baseUrl}/productos/${id}`,body,this.headers);
   }
 
@@ -54,7 +54,5 @@ export class ProductosService{
   eliminarImagen(id:string):Observable<any>{
     return this.http.delete<any>(`${this.baseUrl}/cloudinary/deleteImagen/${id}`,this.headers);
   }
-  editarImagen(producto:Producto,id:string):Observable<any>{
-    return this.http.post<any>(`${this.baseUrl}/cloudinary/editarImagenP/${id}`,producto,this.headers);
-  }
+
 }

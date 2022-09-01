@@ -52,8 +52,6 @@ export class NuevoProductoComponent implements OnInit {
       this.producto.idImagen = this.idFoto;
     }
     if (id) {
-      if (this.cambiarImagen)
-        this.prods.editarImagen(this.producto, this.producto.id).subscribe();
 
       this.prods.editarProducto(this.producto, id)
         .subscribe(resp => {
