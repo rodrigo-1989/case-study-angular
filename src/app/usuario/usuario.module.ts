@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { EditarComponent } from './editar/editar.component';
 import { MaterialModule } from '../material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { HomeComponent } from './home/home.component';
     CommonModule,
     UsuarioRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    SharedModule
   ]
 })
 export class UsuarioModule { }

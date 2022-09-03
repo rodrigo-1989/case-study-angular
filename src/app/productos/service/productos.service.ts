@@ -22,7 +22,7 @@ export class ProductosService{
   }
 
   listarUnProducto(id:string): Observable<Dto> {
-    return this.http.get<Dto>(`${this.baseUrl}/productos/${id}`)
+    return this.http.get<Dto>(`${this.baseUrl}/productos/${id}`,this.headers)
   }
 
   comprarProductos(lista: Comprar[]): Observable<Dto> {

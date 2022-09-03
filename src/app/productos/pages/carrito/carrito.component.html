@@ -1,25 +1,18 @@
-<div>
-    <h2 fxLayoutAlign="center center">Carrito de compras</h2>
-    <hr>
-
-    <div fxLayout="column" fxLayoutGap="250" fxLayoutAlign="center center" class="mt">
-
-        <div fxLayout="row wrap" fxLayoutGap="100px" fxLayoutGap.md="100px" fxLayout.xs="column" fxLayout.sm="column">
-            <div fxFlex.xs="320px" fxFlex.sm="320px" fxFlex.md="70px" *ngFor="let compra of compras"
-                class="animate__animated animate__rubberBand">
-                <app-tarjeta-carrito [compra]="compra" (onIdBorrar)="borrarCompra( $event )"
-                    (onCambiarCantidad)="cambiarCantidad( $event )"></app-tarjeta-carrito>
-            </div>
-        </div>
-        <div>
-            <button mat-button color="basic" class="borde" (click)="comprar()" [disabled]="compras.length < 1 || cargando">
-                Comprar
-                <mat-icon mat-list-icon>shopping_bag</mat-icon>
-            </button>
-            <button mat-button class="borde ml" (click)="cacelarCompra()" [disabled]="compras.length < 1 || cargando">
-                Cancelar comprar
-                <mat-icon mat-list-icon>shopping_bag</mat-icon>
-            </button>
-        </div>
+<h2 class="text-center">Carrito de compras</h2>
+<hr>
+<div class="container justify-content-center row ms-4">
+    <div>
+        <button mat-button color="basic" class="borde ms-5 mb-4" (click)="comprar()"
+            [disabled]="compras.length < 1 || cargando">
+            Comprar <mat-icon mat-list-icon>shopping_bag</mat-icon>
+        </button>
+        <button mat-button class="borde ms-5" (click)="cacelarCompra()" [disabled]="compras.length < 1 || cargando">
+            Cancelar comprar <mat-icon mat-list-icon>delete_forever</mat-icon>
+        </button>
+    </div>
+    <div class="animate__animated animate__rubberBand row col-xl-2 col-lg-3 col-md-4 col-sm-5 col-xs-6 mb-4"
+        *ngFor="let compra of compras">
+        <app-tarjeta-carrito [compra]="compra" (onIdBorrar)="borrarCompra( $event )"
+            (onCambiarCantidad)="cambiarCantidad( $event )"></app-tarjeta-carrito>
     </div>
 </div>

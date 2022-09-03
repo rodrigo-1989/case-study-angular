@@ -57,7 +57,7 @@ export class NuevoProductoComponent implements OnInit {
         .subscribe(resp => {
           if (resp.ok) {
             Swal.fire('Exito!', 'Producto editado con exito', 'success');
-            this.router.navigate(['/admin/listar']);
+            this.router.navigate(['/compras/listar']);
           } else {
             Swal.fire('Error, ', resp.mensaje, 'error');
           }
@@ -68,7 +68,7 @@ export class NuevoProductoComponent implements OnInit {
         .subscribe(resp => {
           if (resp.ok) {
             Swal.fire('Exito!', 'Producto creado con exito', 'success');
-            this.router.navigate(['/admin/listar']);
+            this.router.navigate(['/compras/listar']);
           } else {
             Swal.fire('Error, ', resp.mensaje, 'error');
           }

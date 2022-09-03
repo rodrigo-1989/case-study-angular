@@ -87,3 +87,8 @@ export interface AuthUsuario {
     rol:     string[];
     correo:  string;
 }
+
+export interface Roles {
+    rol: string;
+    activo: boolean;
+  }

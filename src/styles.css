@@ -2975,3 +2975,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-radius: 5%;
   border: PowderBlue 3px solid;
 }
+.img-users{
+  border-radius: 5px;
+  width: 95%;
+  border: 1px solid #a64bf4;
+}
+.p-menu{ 
+  position: sticky;
+  top: 20px;
+}

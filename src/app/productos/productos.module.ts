@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TarjetaProductoComponent } from './components/tarjeta-producto/tarjeta-producto.component';
 import { TarjetaCarritoComponent } from './components/tarjeta-carrito/tarjeta-carrito.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HomeComponent } from './pages/home/home.component';
     CommonModule,
     ProductosRoutingModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ]
 })
 export class ProductosModule { }

@@ -1,19 +1,29 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { CanActivate, CanLoad, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/service/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidarUserGuard implements CanActivate, CanLoad {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+  constructor(private authService: AuthService, private router: Router) { }
+
+  canActivate(): Observable<boolean> | boolean {
+    if (this.authService.usuario.rol.includes('ROLE_USER'))
+      return true;
+    else {
+      this.router.navigateByUrl('/productos')
+      return false
+    }
+
   }
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+  canLoad(): Observable<boolean> | boolean {
+    if (this.authService.usuario.rol.includes('ROLE_USER'))
+      return true;
+    else {
+      this.router.navigateByUrl('/productos')
+      return false
+    }
   }
 }

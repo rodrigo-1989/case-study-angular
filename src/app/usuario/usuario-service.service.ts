@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment.prod';
-import { CResponse, Dto, Usuario } from '../interfaces/respuesta.interface';
+import { CResponse, Usuario } from '../interfaces/respuesta.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -26,7 +26,6 @@ export class UsuarioServiceService {
   }
 
   eliminarImagen(id:string):Observable<any>{
-    return this.http.delete<any>(`${this.baseUrl}/cloudinary/deleteImagen/${id}`,this.headers)
-    .pipe(  );
+    return this.http.delete<any>(`${this.baseUrl}/cloudinary/deleteImagen/${id}`,this.headers);
   }
 }

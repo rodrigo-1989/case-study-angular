@@ -58,7 +58,7 @@ export class ListarProductosComponent implements OnInit {
   }
 
   editar(producto: Producto) {
-    this.router.navigate(['/admin/editar',producto.id]);
+    this.router.navigate(['/compras/editar',producto.id]);
   }
 
   eliminar(producto: Producto) {

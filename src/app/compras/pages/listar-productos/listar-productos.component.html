@@ -1,6 +1,8 @@
-<div class="content-center">
-    <div *ngFor="let producto of productos" class="container">
-        <mat-card class="card">
+<div class="container justify-content-center text-center row ms-5 mb-5">
+    <h1 class="mt-2">Editar Productos</h1>
+    <br><hr>
+    <div *ngFor="let producto of productos" class="col-lg-5 col-sm-10 col-md-10 col-xs-11 animate__animated  animate__fadeIn">
+        <mat-card class="mt-4">
             <mat-card-title>{{ producto.nombre }}</mat-card-title>
             <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
             <mat-card-title-group>
@@ -8,24 +10,24 @@
                     <img mat-card-md-image [src]="producto.imagen" class="img-formato">
                 </mat-card-content>
                 <mat-card-title-group>
-                    <button mat-button mat-fab color="" (click)="addRemove(producto.id,1)" [disabled]="cargando">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                    <span class="contador">{{ producto.existentes }}</span>
-                    <button mat-button mat-fab color="" [disabled]="producto.existentes < 1 || cargando"
-                        (click)="addRemove(producto.id,-1)">
-                        <mat-icon>remove</mat-icon>
-                    </button>
+                    <button mat-button mat-mini-fab color="primary" [disabled]="producto.existentes < 1 || cargando"
+                    (click)="addRemove(producto.id,-1)">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <span class="me-3 ms-3 ">{{ producto.existentes }}</span>
+                <button mat-button mat-mini-fab color="primary" (click)="addRemove(producto.id,1)" [disabled]="cargando">
+                    <mat-icon>add</mat-icon>
+                </button>
                 </mat-card-title-group>
-                <button mat-button mat-fab color="" (click)="enviarCambio(producto)" [disabled]="cargando">
+                <button mat-button mat-mini-fab color="primary" (click)="enviarCambio(producto)" [disabled]="cargando">
                     <mat-icon>send</mat-icon>
                 </button>
             </mat-card-title-group>
             <mat-card-actions>
-                <button mat-button (click)="editar(producto)" [disabled]="cargando">
+                <button mat-flat-button color="primary" class=" me-3" (click)="editar(producto)" [disabled]="cargando">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-button color="warn" (click)="eliminar(producto)" [disabled]="cargando">
+                <button mat-flat-button color="warn" (click)="eliminar(producto)" [disabled]="cargando">
                     <mat-icon>delete</mat-icon>
                 </button>
             </mat-card-actions>

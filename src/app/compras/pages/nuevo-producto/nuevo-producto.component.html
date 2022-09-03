@@ -1,68 +1,70 @@
-<h1> {{(producto.id)?'Editar':'Nuevo'}} Producto <small>{{ producto.nombre}}</small></h1>
+<div class="container mt-3">
+    <h1> {{(producto.id)?'Editar':'Nuevo'}} Producto <small>{{ producto.nombre}}</small></h1>
 
-<form [formGroup]="formulario" fxLayout="row" fxLayoutGap="40px">
-    <div fxFlex="50" fxLayout="column">
-
-        <mat-form-field fxFlex="100">
-            <mat-label>Nombre del producto</mat-label>
-            <input type="text" matInput required formControlName="nombre">
-        </mat-form-field>
-
-        <mat-form-field fxFlex="100">
-            <mat-label>Descripcion</mat-label>
-            <input type="text" matInput required formControlName="descripcion">
-        </mat-form-field>
-
-        <mat-form-field fxFlex="100">
-            <mat-label>Precio</mat-label>
-            <input type="number" matInput required formControlName="precio">
-        </mat-form-field>
-
-        <mat-form-field fxFlex="100">
-            <mat-label>Cantidad</mat-label>
-            <input type="number" matInput formControlName="existentes">
-        </mat-form-field>
-
-        <br>
-        <div fxLayoutAlign="end" fxLayoutGap="120px">
-            <button  mat-raised-button color="primary" (click)="cancelar()" [disabled]="cargando">
-                <mat-icon >cancel</mat-icon> Cancelar
-            </button>
-                
-            <button mat-raised-button color="primary" (click)="guardar(producto.id)"
-                [disabled]="formulario.invalid || cargando">
-                <mat-icon *ngIf="producto.id">edit</mat-icon>
-                <mat-icon *ngIf="!producto.id">save</mat-icon>
-                {{(producto.id)?'Actualizar':'Crear'}}
-            </button>
+    <form [formGroup]="formulario" fxLayout="row" fxLayoutGap="40px">
+        <div fxFlex="50" fxLayout="column">
+    
+            <mat-form-field fxFlex="100">
+                <mat-label>Nombre del producto</mat-label>
+                <input type="text" matInput required formControlName="nombre">
+            </mat-form-field>
+    
+            <mat-form-field fxFlex="100">
+                <mat-label>Descripcion</mat-label>
+                <input type="text" matInput required formControlName="descripcion">
+            </mat-form-field>
+    
+            <mat-form-field fxFlex="100">
+                <mat-label>Precio</mat-label>
+                <input type="number" matInput required formControlName="precio">
+            </mat-form-field>
+    
+            <mat-form-field fxFlex="100">
+                <mat-label>Cantidad</mat-label>
+                <input type="number" matInput formControlName="existentes">
+            </mat-form-field>
+    
+            <br>
+            <div fxLayoutAlign="end" fxLayoutGap="120px" fxLayoutGap.gt-md="90px" fxLayoutGap.sm="60px">
+                <button  mat-raised-button color="primary" (click)="cancelar()" [disabled]="cargando">
+                    <mat-icon >cancel</mat-icon> Cancelar
+                </button>
+                    
+                <button mat-raised-button color="primary" (click)="guardar(producto.id)"
+                    [disabled]="formulario.invalid || cargando">
+                    <mat-icon *ngIf="producto.id">edit</mat-icon>
+                    <mat-icon *ngIf="!producto.id">save</mat-icon>
+                    {{(producto.id)?'Actualizar':'Crear'}}
+                </button>
+            </div>
         </div>
-    </div>
-
-    <div fxFlex="40" fxLayout="column" *ngIf="!cambiarImagen && producto.id">
-        <img fxFlex="60" [src]="producto.imagen" class="img">
-        <br>
-        <div>
-            <button fxFlex="65" mat-raised-button [disabled]="cargando" (click)="cambiar()" color="primary">
-                Cambiar imagen <mat-icon>change_circle</mat-icon>
-            </button>
+    
+        <div fxFlex="40" fxLayout="column" *ngIf="!cambiarImagen && producto.id">
+            <img fxFlex="60" [src]="producto.imagen" class="img">
+            <br>
+            <div>
+                <button fxFlex="65" mat-raised-button [disabled]="cargando" (click)="cambiar()" color="primary">
+                    Cambiar imagen <mat-icon>change_circle</mat-icon>
+                </button>
+            </div>
         </div>
-    </div>
-    <div fxFlex="25" fxLayout="column" *ngIf="cambiarImagen || !producto.id">
-        <ngx-dropzone fxFlex="60" (change)="seleccionaImagen( $event )">
-            <ngx-dropzone-label>Click o arrastra tu imagen <mat-icon>insert_photo</mat-icon>
-            </ngx-dropzone-label>
-            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
-                [removable]="true" (removed)="quitarImagen(f)">
-            </ngx-dropzone-image-preview>
-        </ngx-dropzone>
-        <br>
-        <div>
-            <button fxFlex="100" mat-raised-button (click)="subirImagen()"
-                [disabled]="cargando || files.length < 1 || idFoto!=='' " color="primary">
-                Subir foto <mat-icon>insert_photo</mat-icon>
-            </button>
+        <div fxFlex="25" fxLayout="column" *ngIf="cambiarImagen || !producto.id">
+            <ngx-dropzone fxFlex="60" (change)="seleccionaImagen( $event )">
+                <ngx-dropzone-label>Click o arrastra tu imagen <mat-icon>insert_photo</mat-icon>
+                </ngx-dropzone-label>
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                    [removable]="true" (removed)="quitarImagen(f)">
+                </ngx-dropzone-image-preview>
+            </ngx-dropzone>
+            <br>
+            <div>
+                <button fxFlex="100" mat-raised-button (click)="subirImagen()"
+                    [disabled]="cargando || files.length < 1 || idFoto!=='' " color="primary">
+                    Subir foto <mat-icon>insert_photo</mat-icon>
+                </button>
+            </div>
         </div>
-    </div>
-</form>
-<br><br>
-<mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>
+    </form>
+    <br><br>
+    <mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>
+</div>
