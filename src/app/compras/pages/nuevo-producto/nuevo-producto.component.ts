@@ -14,10 +14,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NuevoProductoComponent implements OnInit {
 
   formulario: FormGroup = this.fb.group({
-    nombre: ['Bubu lubu', [Validators.required, Validators.minLength(3)]],
-    precio: [8, [Validators.required, Validators.min(0)]],
-    descripcion: ['Marinela', [Validators.required, Validators.minLength(3)]],
-    existentes: [12, [Validators.min(0)]]
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    precio: [0, [Validators.required, Validators.min(0)]],
+    descripcion: ['', [Validators.required, Validators.minLength(3)]],
+    existentes: [0, [Validators.min(0)]]
   })
   cargando: boolean = false;
   producto: Producto = { id: '', nombre: '', precio: 0, descripcion: '', existentes: 0, imagen: null, idImagen: null };
