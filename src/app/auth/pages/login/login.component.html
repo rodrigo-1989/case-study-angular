@@ -1,7 +1,7 @@
 <form [formGroup]="miFormulario" (ngSubmit)="login()"  fxLayoutAlign="center center" >
 
     <div fxLayout="column" fxFlex="30"fxLayoutGap="20px" >
-        <span class="login100-form-title p-b-49 p-t-90 text-w">Login</span>
+        <span class="login100-form-title p-b-49 p-t-90 text-t">Login</span>
         <mat-form-field>
             <mat-label>Usuario</mat-label>
             <input type="text" formControlName="username" matInput required placeholder="Ingrese su usuario">
@@ -20,7 +20,7 @@
             <span class="txt1 p-b-17">
                 ¿No tienes cuenta?
             </span>
-            <a routerLink="/auth/registro"  >
+            <a routerLink="/auth/registro" class="text-m">
                 Crear una aquí
             </a>
         </div>

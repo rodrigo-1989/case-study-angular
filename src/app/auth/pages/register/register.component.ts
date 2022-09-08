@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: [`.text-w{ color:aliceblue; }`
+  styles: [`.text-t{  color:#a64bf4; -webkit-text-stroke: 0.5px aliceblue;} .text-m{  color:#a64bf4; }`
   ]
 })
 export class RegisterComponent{
@@ -22,11 +22,11 @@ export class RegisterComponent{
   cambiarImagen: boolean = false;
 
   miFormulario: FormGroup = this.fb.group({
-    email: ['julio@hotmail.com', [Validators.required, Validators.email]],
+    email: ['usuario@hotmail.com', [Validators.required, Validators.email]],
     password: ['12345', [Validators.required, Validators.minLength(5)]],
     password2: ['12345', [Validators.required, Validators.minLength(5)]],
-    nombre: ['Julio', [Validators.required]],
-    usuario: ['julio', [Validators.required, Validators.minLength(5)]],
+    nombre: ['usuario', [Validators.required]],
+    usuario: ['usuario', [Validators.required, Validators.minLength(5)]],
   });
   constructor(private fb: FormBuilder, private authService: AuthService,private idRoute: ActivatedRoute,private router:Router) { }
 
@@ -39,10 +39,11 @@ export class RegisterComponent{
   
       this.authService.register(this.usuario)
       .subscribe(res => {
-        if (res === true) {
+        if (res.ok ) {
           Swal.fire('Felicidades!', 'Usuario creado con exito', 'success')
+          this.router.navigateByUrl('/auth/login')
         } else {
-          Swal.fire('Opss!', res.error.msg, 'error')
+          Swal.fire('Opss!', res.mensaje, 'error')
         }
         this.cargando = false;
       });

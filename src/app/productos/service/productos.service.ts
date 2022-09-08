@@ -11,9 +11,7 @@ import { environment } from '../../../environments/environment';
 export class ProductosService{
 
   constructor(private http: HttpClient) { }
-     headers = {headers: new HttpHeaders({
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem('token')!)}`
-    })};
+
     private baseUrl = environment.baseUrl;
     private urlCloudinary = environment.urlCloudinary
 
@@ -22,29 +20,29 @@ export class ProductosService{
   }
 
   listarUnProducto(id:string): Observable<Dto> {
-    return this.http.get<Dto>(`${this.baseUrl}/productos/${id}`,this.headers)
+    return this.http.get<Dto>(`${this.baseUrl}/productos/${id}`)
   }
 
   comprarProductos(lista: Comprar[]): Observable<Dto> {
-    return this.http.post<Dto>(`${this.baseUrl}/productos/compraUsuario`, lista,this.headers);
+    return this.http.post<Dto>(`${this.baseUrl}/productos/compraUsuario`, lista);
   }
 
   editarExistencia(lista: Comprar): Observable<Dto> {
-    return this.http.put<Dto>(`${this.baseUrl}/productos/compraTiendaUno`, lista,this.headers);
+    return this.http.put<Dto>(`${this.baseUrl}/productos/compraTiendaUno`, lista);
   }
 
   eliminarProducto(id:string): Observable<Dto> {
-    return this.http.delete<Dto>(`${this.baseUrl}/productos/${id}`,this.headers);
+    return this.http.delete<Dto>(`${this.baseUrl}/productos/${id}`);
   }
 
-  crearProducto({nombre,descripcion,precio,existentes}:Producto): Observable<Dto> {
-    const body = { nombre,descripcion,precio,existentes }
-    return this.http.post<Dto>(`${this.baseUrl}productos`,body,this.headers);
+  crearProducto({nombre,descripcion,precio,existentes,imagen,idImagen}:Producto): Observable<Dto> {
+    const body = { nombre,descripcion,precio,existentes,imagen,idImagen }
+    return this.http.post<Dto>(`${this.baseUrl}/productos`,body);
   }
 
   editarProducto({nombre,descripcion,precio,existentes,imagen,idImagen}:Producto,id:string): Observable<Dto> {
-    const body = { nombre,descripcion,precio,existentes,imagen,idImagen } 
-    return this.http.put<Dto>(`${this.baseUrl}/productos/${id}`,body,this.headers);
+    const body = { nombre,descripcion,precio,existentes,imagen,idImagen }
+    return this.http.put<Dto>(`${this.baseUrl}/productos/${id}`,body);
   }
 
   subirImagen(data:any):Observable<CResponse>{
@@ -52,7 +50,7 @@ export class ProductosService{
   }
 
   eliminarImagen(id:string):Observable<any>{
-    return this.http.delete<any>(`${this.baseUrl}/cloudinary/deleteImagen/${id}`,this.headers);
+    return this.http.delete<any>(`${this.baseUrl}/cloudinary/deleteImagen/${id}`);
   }
 
 }

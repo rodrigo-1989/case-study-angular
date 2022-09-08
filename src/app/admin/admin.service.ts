@@ -10,28 +10,20 @@ import { Usuario } from '../interfaces/respuesta.interface';
 export class AdminService {
 
   constructor(private http: HttpClient) { }
-  headers = {
-    headers: new HttpHeaders({
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem('token')!)}`
-    })
-  };
+
   private baseUrl = environment.baseUrl;
 
   listarUsuario(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/usuarios`, this.headers)
+    return this.http.get<any>(`${this.baseUrl}/usuarios`)
       .pipe(
         map(res => res.usuarios? res:false),
         catchError(err => of(err))
       );
   }
   activarDesactivar(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/usuarios/${id}`, this.headers);
+    return this.http.delete<any>(`${this.baseUrl}/usuarios/${id}`);
   }
   editarRoles(body: Usuario, id: string): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/usuarios/editarRoles/${id}`, body, this.headers)
-      .pipe(
-        map(res => res.id),
-        catchError(err => of(err))
-      );
+    return this.http.put<any>(`${this.baseUrl}/usuarios/editarRoles/${id}`, body);
   }
 }

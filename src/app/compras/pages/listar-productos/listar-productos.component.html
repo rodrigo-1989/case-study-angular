@@ -4,7 +4,7 @@
     <div *ngFor="let producto of productos" class="col-lg-5 col-sm-10 col-md-10 col-xs-11 animate__animated  animate__fadeIn">
         <mat-card class="mt-4">
             <mat-card-title>{{ producto.nombre }}</mat-card-title>
-            <mat-card-subtitle>{{ producto.descripcion }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ producto.descripcion }} - {{ producto.precio | currency }}</mat-card-subtitle>
             <mat-card-title-group>
                 <mat-card-content>
                     <img mat-card-md-image [src]="producto.imagen" class="img-formato">

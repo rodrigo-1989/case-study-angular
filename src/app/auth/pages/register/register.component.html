@@ -2,7 +2,7 @@
 <form [formGroup]="miFormulario" fxLayoutAlign="center center" (ngSubmit)="registro()">
 
     <div fxLayout="column" fxFlex="30" fxLayoutGap="20px">
-        <span class="login100-form-title p-b-49 p-t-30 text-w">{{(usuario.id)?'Editar':'Nuevo'}} usuario</span>
+        <span class="login100-form-title p-b-49 p-t-30 text-t">{{(usuario.id)?'Editar':'Nuevo'}} usuario</span>
 
         <mat-form-field>
             <mat-label>Correo</mat-label>
@@ -34,7 +34,7 @@
                 ¿Ya tienes cuenta?
             </span>
 
-            <a routerLink="/auth/login">
+            <a routerLink="/auth/login" class="text-m">
                 Ingresar aquí
             </a>
         </div>

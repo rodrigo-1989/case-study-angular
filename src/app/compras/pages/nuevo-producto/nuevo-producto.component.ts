@@ -14,10 +14,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NuevoProductoComponent implements OnInit {
 
   formulario: FormGroup = this.fb.group({
-    nombre: ['', [Validators.required, Validators.minLength(3)]],
-    precio: [0, [Validators.required, Validators.min(0)]],
-    descripcion: ['', [Validators.required, Validators.minLength(3)]],
-    existentes: [0, [Validators.min(0)]]
+    nombre: ['Carameladas', [Validators.required, Validators.minLength(3)]],
+    precio: [15, [Validators.required, Validators.min(0)]],
+    descripcion: ['Barcel', [Validators.required, Validators.minLength(3)]],
+    existentes: [10, [Validators.min(0)]]
   })
   cargando: boolean = false;
   producto: Producto = { id: '', nombre: '', precio: 0, descripcion: '', existentes: 0, imagen: null, idImagen: null };
@@ -25,6 +25,7 @@ export class NuevoProductoComponent implements OnInit {
   foto: string = '';
   idFoto: string = '';
   cambiarImagen: boolean = false;
+  cambiarI: boolean = false;
 
   constructor(private fb: FormBuilder, private prods: ProductosService, private router: Router, private idRoute: ActivatedRoute) { }
 
@@ -47,12 +48,11 @@ export class NuevoProductoComponent implements OnInit {
     this.producto.precio = this.formulario.value.precio;
     this.producto.descripcion = this.formulario.value.descripcion;
     this.producto.existentes = this.formulario.value.existentes;
-    if (this.cambiarImagen) {
+    if (this.cambiarI) {
       this.producto.imagen = this.foto;
       this.producto.idImagen = this.idFoto;
     }
     if (id) {
-
       this.prods.editarProducto(this.producto, id)
         .subscribe(resp => {
           if (resp.ok) {
@@ -79,6 +79,7 @@ export class NuevoProductoComponent implements OnInit {
 
   subirImagen() {
     this.cargando = true;
+    this.cambiarI = true;
     if (!this.idFoto) {
       if (!this.files[0]) {
         this.cargando = false;
@@ -114,13 +115,14 @@ export class NuevoProductoComponent implements OnInit {
     this.idFoto = '';
     this.cargando = false;
     this.cambiarImagen = false;
+    this.cambiarI = false;
   }
 
   cambiar() {
     this.cambiarImagen = true;
   }
   cancelar(){
-    this.router.navigate(['/admin/listar']);
+    this.router.navigate(['/compras/listar']);
   }
 
 }

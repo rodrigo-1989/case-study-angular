@@ -47,7 +47,7 @@ export class UsuariosComponent implements OnInit {
     this.cargando = true;
     this.adminService.editarRoles(usuario, usuario.id!)
       .subscribe(res => {
-        if (!res === true)
+        if (!res.ok)
           Swal.fire('Opss!', res.error, 'error')
         this.cargando = false;
         this.ngOnInit();
