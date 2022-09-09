@@ -22,11 +22,11 @@ export class RegisterComponent{
   cambiarImagen: boolean = false;
 
   miFormulario: FormGroup = this.fb.group({
-    email: ['usuario@hotmail.com', [Validators.required, Validators.email]],
-    password: ['12345', [Validators.required, Validators.minLength(5)]],
-    password2: ['12345', [Validators.required, Validators.minLength(5)]],
-    nombre: ['usuario', [Validators.required]],
-    usuario: ['usuario', [Validators.required, Validators.minLength(5)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(5)]],
+    password2: ['', [Validators.required, Validators.minLength(5)]],
+    nombre: ['', [Validators.required]],
+    usuario: ['', [Validators.required, Validators.minLength(5)]],
   });
   constructor(private fb: FormBuilder, private authService: AuthService,private idRoute: ActivatedRoute,private router:Router) { }
 
