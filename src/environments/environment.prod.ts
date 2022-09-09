@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://localhost:8000',
+  baseUrl: 'https://case-study-rodrigo.herokuapp.com',
   urlCloudinary:'https://api.cloudinary.com/v1_1/djxpuwlz0/image/upload',
 };
