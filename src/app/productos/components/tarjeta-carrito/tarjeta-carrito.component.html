@@ -9,14 +9,14 @@
             <img mat-card-image [src]="compra.foto" class="img-fluid">
         </mat-card-content>
         <mat-card-actions>
-            <button mat-mini-fab color="accent" (click)="agregar(-1)" [disabled]="compra.cantidad < 1">
+            <button mat-mini-fab color="accent" (click)="agregar(-1)" [disabled]="compra.cantidad < 1 || cargando">
                 <mat-icon>remove</mat-icon>
             </button>
             <button mat-mini-fab color="accent" (click)="agregar(+1)" class="ml"
-                [disabled]="compra.existentes === compra.cantidad">
+                [disabled]="compra.existentes === compra.cantidad || cargando">
                 <mat-icon>add</mat-icon>
             </button>
-            <button mat-mini-fab color="accent" (click)="eliminarCompra(compra.id)" class="ml">
+            <button mat-mini-fab color="accent" (click)="eliminarCompra(compra.id)" class="ml" disabled="cargando">
                 <mat-icon>delete</mat-icon>
             </button>
     

@@ -9,6 +9,7 @@ import { Compra } from '../../../interfaces/respuesta.interface';
 export class TarjetaCarritoComponent{
 
   @Input() compra!: Compra;
+  @Input() cargando: boolean = false;
   @Output() onIdBorrar: EventEmitter<string> = new EventEmitter();
   @Output() onCambiarCantidad: EventEmitter<Compra> = new EventEmitter();
 

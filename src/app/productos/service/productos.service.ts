@@ -23,8 +23,8 @@ export class ProductosService{
     return this.http.get<Dto>(`${this.baseUrl}/productos/${id}`)
   }
 
-  comprarProductos(lista: Comprar[]): Observable<Dto> {
-    return this.http.post<Dto>(`${this.baseUrl}/productos/compraUsuario`, lista);
+  comprarProductos(id:string,lista: Comprar[]): Observable<Dto> {
+    return this.http.post<Dto>(`${this.baseUrl}/productos/compraUsuario/${id}`, lista);
   }
 
   editarExistencia(lista: Comprar): Observable<Dto> {

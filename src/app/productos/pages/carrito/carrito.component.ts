@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Compra } from '../../../interfaces/respuesta.interface';
 import { ProductosService } from '../../service/productos.service';
+import { AuthService } from '../../../auth/service/auth.service';
 export interface Comprar {
   id: string;
   cantidad: number;
@@ -17,7 +18,10 @@ export class CarritoComponent implements OnInit, OnDestroy {
   compras: Compra[] = [];
   realizarCompra: Comprar[] = [];
   cargando: boolean = false;
-  constructor(private ps: ProductosService) { }
+  get usuario() {
+    return this.authService.usuario;
+  }
+  constructor(private ps: ProductosService, private authService:AuthService) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('arregloCompras')) {
@@ -45,7 +49,7 @@ export class CarritoComponent implements OnInit, OnDestroy {
     this.compras.forEach(({ id, cantidad }) => {
       this.realizarCompra.push({ id, cantidad: (cantidad * -1) });
     });
-    this.ps.comprarProductos(this.realizarCompra)
+    this.ps.comprarProductos(this.usuario.id,this.realizarCompra)
       .subscribe(response => {
         if (response.ok) {
           localStorage.removeItem('arregloCompras');
