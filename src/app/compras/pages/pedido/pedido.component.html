@@ -1,0 +1,22 @@
+<div class="container mt-5 ">
+    <table class="table table-dark table-striped sombra">
+        <thead>
+            <tr>
+                <th scope="col">Pedido N°</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Total</th>
+                <th scope="col">Ver detalle</th>
+                <th scope="col">Marcar entrega</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of pedidos,let i=index ">
+                <td>{{i+1}}</td>
+                <td>{{ pedido.fechaCompra | date:'medium'}}</td>
+                <td>{{ pedido.total }}</td>
+                <td><button  mat-raised-button color="accent" (click)="verDetalle(pedido.id)">Ver</button></td>
+                <td><button  mat-raised-button color="warn" (click)="quitarPedido(pedido.id)">Entregar<mat-icon>check_circle</mat-icon></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

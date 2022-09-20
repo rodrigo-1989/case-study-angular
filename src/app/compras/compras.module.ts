@@ -8,6 +8,8 @@ import { ListarProductosComponent } from './pages/listar-productos/listar-produc
 import { NuevoProductoComponent } from './pages/nuevo-producto/nuevo-producto.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { PedidoComponent } from './pages/pedido/pedido.component';
+import { PedidoDetalladoComponent } from './pages/pedido-detallado/pedido-detallado.component';
 
 
 @NgModule({
@@ -15,6 +17,8 @@ import { SharedModule } from '../shared/shared.module';
     ListarProductosComponent,
     NuevoProductoComponent,
     HomeComponent,
+    PedidoComponent,
+    PedidoDetalladoComponent,
   ],
   imports: [
     CommonModule,

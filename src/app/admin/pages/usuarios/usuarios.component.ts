@@ -27,7 +27,7 @@ export class UsuariosComponent implements OnInit {
           Swal.fire('Opss!', 'Algo salio mal al cargar los usuarios', 'error');
           this.router.navigateByUrl('/productos');
         }else {
-          this.usuarios = res.usuarios;
+          this.usuarios = res.usuarios!;
           this.usuarios = this.usuarios.filter(u => u.id !== this.usuario.id)
         }
       });
@@ -37,7 +37,7 @@ export class UsuariosComponent implements OnInit {
     this.adminService.activarDesactivar(id)
       .subscribe(res => {
         if (!res.ok)
-          Swal.fire('Opss!', res.msg, 'error')
+          Swal.fire('Opss!', res.mensaje!, 'error')
         this.cargando = false;
         this.ngOnInit();
       });
@@ -48,7 +48,7 @@ export class UsuariosComponent implements OnInit {
     this.adminService.editarRoles(usuario, usuario.id!)
       .subscribe(res => {
         if (!res.ok)
-          Swal.fire('Opss!', res.error, 'error')
+          Swal.fire('Opss!', res.mensaje!, 'error')
         this.cargando = false;
         this.ngOnInit();
       });

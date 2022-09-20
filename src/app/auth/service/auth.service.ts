@@ -73,9 +73,9 @@ export class AuthService {
       );
   }
 
-  register({ name, username, email, password }: Usuario): Observable<any> {
+  register({ name, username, email, password }: Usuario): Observable<Dto> {
     const body = { name, username, email, password }
-    return this.http.post<any>(`${this.baseUrl}/usuarios/crear`, body);
+    return this.http.post<Dto>(`${this.baseUrl}/usuarios/crear`, body);
   }
 
   logout() {

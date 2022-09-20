@@ -16,7 +16,7 @@
                 [disabled]="compra.existentes === compra.cantidad || cargando">
                 <mat-icon>add</mat-icon>
             </button>
-            <button mat-mini-fab color="accent" (click)="eliminarCompra(compra.id)" class="ml" disabled="cargando">
+            <button mat-mini-fab color="accent" (click)="eliminarCompra(compra.id)" class="ml" [disabled]="cargando">
                 <mat-icon>delete</mat-icon>
             </button>
     

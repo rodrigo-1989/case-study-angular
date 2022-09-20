@@ -49,8 +49,19 @@ export class ProductosService{
     return this.http.post<CResponse>(this.urlCloudinary,data)
   }
 
-  eliminarImagen(id:string):Observable<any>{
-    return this.http.delete<any>(`${this.baseUrl}/cloudinary/deleteImagen/${id}`);
+  eliminarImagen(id:string):Observable<Dto>{
+    return this.http.delete<Dto>(`${this.baseUrl}/cloudinary/deleteImagen/${id}`);
+  }
+
+  pedidos():Observable<Dto>{
+    return this.http.get<Dto>(`${this.baseUrl}/pedidos`);
+  }
+
+  quitarPedido(id:string):Observable<Dto>{
+    return this.http.put<Dto>(`${this.baseUrl}/pedidos/${id}`,{});
+  }
+  detallePedido(id:string):Observable<Dto>{
+    return this.http.get<Dto>(`${this.baseUrl}/pedidos/detalle/${id}`);
   }
 
 }

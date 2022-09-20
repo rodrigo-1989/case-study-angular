@@ -8,22 +8,28 @@
             <mat-label>Correo</mat-label>
             <input type="email" formControlName="email" matInput required placeholder="Ingrese su correo">
         </mat-form-field>
+        <p class="text-danger" *ngIf="verificarCampo('email')">Formato de correo invalido</p>
+        
         <mat-form-field>
             <mat-label>Nombre</mat-label>
             <input type="text" formControlName="nombre" matInput required placeholder="Ingrese su nombre">
         </mat-form-field>
+        <p class="text-danger" *ngIf="verificarCampo('nombre')">Nombre muy corto</p>
         <mat-form-field>
             <mat-label>Usuario</mat-label>
             <input type="text" formControlName="usuario" matInput required placeholder="Ingrese su usuario">
         </mat-form-field>
+        <p class="text-danger" *ngIf="verificarCampo('usuario')">Nombre de usuario muy corto</p>
         <mat-form-field>
             <mat-label>Contraseña</mat-label>
             <input type="password" formControlName="password" (input)="verificarPassword()" matInput required placeholder="Ingrese su contraseña">
         </mat-form-field>
+        <p class="text-danger" *ngIf="verificarCampo('password')">Contraseña muy corta</p>
         <mat-form-field>
             <mat-label>Verificar contraseña</mat-label>
             <input type="password" formControlName="password2" (input)="verificarPassword()" matInput required placeholder="verifique su contraseña">
         </mat-form-field>
+        <p class="text-danger" *ngIf="verificarCampo('password2')">Contraseñas no coinsiden</p>
 
         <button mat-raised-button color="primary" (click)="registro()" [disabled]="miFormulario.invalid || cargando">
             <mat-icon *ngIf="!usuario.id">person_add</mat-icon> Crear

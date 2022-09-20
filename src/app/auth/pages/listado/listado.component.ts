@@ -17,9 +17,9 @@ export class ListadoComponent implements OnInit {
   ngOnInit(): void {
     this.authService.listarProductos().subscribe( res => {
       if(res.ok){
-        this.productos = res.productos;
+        this.productos = res.productos!;
       }else{
-        Swal.fire('Erro','Opss!, Algo salio mal','error');
+        Swal.fire('Erro','Opss!'+res.mensaje,'error');
       }
     })
   }

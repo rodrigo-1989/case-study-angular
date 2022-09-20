@@ -20,7 +20,7 @@ productos:Producto[] = [];
   buscar(){
     if(this.miFormulario.value.nombre){
       this.authService.listarParecidos(this.miFormulario.value.nombre).subscribe( res=>{
-        this.productos = res.productos;
+        this.productos = res.productos!;
       })
     }
   }

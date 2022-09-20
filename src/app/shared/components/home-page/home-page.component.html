@@ -19,7 +19,7 @@
         <mat-nav-list *ngIf="usuario.rol.includes('ROLE_COMPRAS')" routerLinkActive="active">
             <button mat-list-item [matMenuTriggerFor]="compras">
                 <mat-icon mat-list-icon>precision_manufacturing</mat-icon>
-                <span>Productos</span>
+                <span>Dep. Compras</span>
             </button>
         </mat-nav-list>
 
@@ -50,10 +50,13 @@
 
         <mat-menu #compras="matMenu">
             <button mat-menu-item routerLink="/compras/listar" (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>shopping_bag</mat-icon> <span>Ver productos</span>
+                <mat-icon mat-list-icon>view_module</mat-icon> <span>Ver productos</span>
             </button>
             <button mat-menu-item routerLink="/compras/nuevo" (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>add_circle</mat-icon><span>Crear nuevo</span>
+            </button>
+            <button mat-menu-item routerLink="/compras/pedido" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>assignment_turned_in</mat-icon><span>Ver pedidos</span>
             </button>
         </mat-menu>
     </mat-sidenav>

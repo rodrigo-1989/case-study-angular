@@ -14,10 +14,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NuevoProductoComponent implements OnInit {
 
   formulario: FormGroup = this.fb.group({
-    nombre: ['Carameladas', [Validators.required, Validators.minLength(3)]],
-    precio: [15, [Validators.required, Validators.min(0)]],
-    descripcion: ['Barcel', [Validators.required, Validators.minLength(3)]],
-    existentes: [10, [Validators.min(0)]]
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    precio: [0, [Validators.required, Validators.min(0)]],
+    descripcion: ['', [Validators.required, Validators.minLength(3)]],
+    existentes: [0, [Validators.min(0)]]
   })
   cargando: boolean = false;
   producto: Producto = { id: '', nombre: '', precio: 0, descripcion: '', existentes: 0, imagen: null, idImagen: null };
@@ -59,7 +59,7 @@ export class NuevoProductoComponent implements OnInit {
             Swal.fire('Exito!', 'Producto editado con exito', 'success');
             this.router.navigate(['/compras/listar']);
           } else {
-            Swal.fire('Error, ', resp.mensaje, 'error');
+            Swal.fire('Error, ', resp.mensaje!, 'error');
           }
           this.cargando = false;
         })
@@ -70,7 +70,7 @@ export class NuevoProductoComponent implements OnInit {
             Swal.fire('Exito!', 'Producto creado con exito', 'success');
             this.router.navigate(['/compras/listar']);
           } else {
-            Swal.fire('Error, ', resp.mensaje, 'error');
+            Swal.fire('Error, ', resp.mensaje!, 'error');
           }
           this.cargando = false;
         })

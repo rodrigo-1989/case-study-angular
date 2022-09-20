@@ -1,0 +1,77 @@
+<div class="container mt-5">
+
+  <mat-accordion class="example-headers-align" multi>
+
+    <mat-expansion-panel class="sombra">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Usuario
+        </mat-panel-title>
+        <mat-panel-description>
+          Información del usuario
+          <mat-icon>face</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div appearance="fill">
+        <div class="row">
+          <img [src]="usuario.image" class="img-u col">
+          <div class=" col mt-5 ms-4">
+            <p class="text-warning"><span class="text-white">Nombre:</span> {{usuario.name}}</p>
+            <p class="text-warning"><span class="text-white">Email:</span> {{usuario.email}}</p>
+            <p class="text-warning"><span class="text-white">usuario:</span> {{usuario.username}}</p>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel class="sombra">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+          Pedido
+        </mat-panel-title>
+        <mat-panel-description>
+          Información del pedido
+          <mat-icon>feedback</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div appearance="fill">
+        <div class="row">
+          <p class="text-warning"><span class="text-white">Fecha de la compra:</span> {{pedido.fechaCompra | date:'medium'}}</p>
+          <p class="text-warning"><span class="text-white">Total:</span> {{pedido.total | currency}}</p>
+          <p class="text-warning"><span class="text-white">Status de la compra:</span> Pendiente</p>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel class="sombra">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+          Productos
+        </mat-panel-title>
+        <mat-panel-description>
+          Lista de productos
+          <mat-icon>list</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div appearance="fill">
+        <div *ngFor="let producto of productos" class="row">
+          <img [src]="producto.imagen" class="img-p col-3 mt-2">
+          <div class=" col mt-5 ms-4">
+            <p class="text-warning"><span class="text-white">Nombre:</span> {{producto.nombre}}</p>
+            <p class="text-warning"><span class="text-white">Precio:</span> {{producto.precio | currency}}</p>
+            <p class="text-warning"><span class="text-white">Descripcion:</span> {{producto.descripcion}}</p>
+            <br><hr>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+
+  <button mat-raised-button color="primary" (click)="regresar()" class="mt-4 mb-5 sombra">
+    <mat-icon>reply</mat-icon>Regresar
+  </button>
+</div>

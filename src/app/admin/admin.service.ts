@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable, map, catchError, of } from 'rxjs';
-import { Usuario } from '../interfaces/respuesta.interface';
+import { Usuario, Dto } from '../interfaces/respuesta.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +13,13 @@ export class AdminService {
 
   private baseUrl = environment.baseUrl;
 
-  listarUsuario(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/usuarios`)
-      .pipe(
-        map(res => res.usuarios? res:false),
-        catchError(err => of(err))
-      );
+  listarUsuario(): Observable<Dto> {
+    return this.http.get<Dto>(`${this.baseUrl}/usuarios`);
   }
-  activarDesactivar(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/usuarios/${id}`);
+  activarDesactivar(id: string): Observable<Dto> {
+    return this.http.delete<Dto>(`${this.baseUrl}/usuarios/${id}`);
   }
-  editarRoles(body: Usuario, id: string): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/usuarios/editarRoles/${id}`, body);
+  editarRoles(body: Usuario, id: string): Observable<Dto> {
+    return this.http.put<Dto>(`${this.baseUrl}/usuarios/editarRoles/${id}`, body);
   }
 }

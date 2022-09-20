@@ -21,7 +21,7 @@ export class ListarProductosComponent implements OnInit {
   ngOnInit(): void {
     this.productoService.listarProductos()
       .subscribe(resp => {
-        this.productos = resp.productos;
+        this.productos = resp.productos!;
       });
   }
 
@@ -34,7 +34,7 @@ export class ListarProductosComponent implements OnInit {
 
   enviarCambio(producto: Producto) {
     this.cargando = true;
-    this.editExis = { id: producto.id!, cantidad: producto.existentes };
+    this.editExis = {idProducto: producto.id!, cantidad: producto.existentes };
     this.productoService.editarExistencia(this.editExis)
       .subscribe(response => {
         if (response.ok) {
@@ -51,7 +51,7 @@ export class ListarProductosComponent implements OnInit {
           })
         }
         else {
-          Swal.fire('Error, ', response.mensaje, 'error');
+          Swal.fire('Error, ', response.mensaje!, 'error');
         }
         this.cargando = false;
       });
@@ -89,7 +89,7 @@ export class ListarProductosComponent implements OnInit {
               this.cargando = false;
               this.ngOnInit();
             } else {
-              Swal.fire('Error, ', res.mensaje, 'error');
+              Swal.fire('Error, ', res.mensaje!, 'error');
               this.cargando = false;
               this.ngOnInit();
             }

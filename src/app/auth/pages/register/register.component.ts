@@ -43,7 +43,7 @@ export class RegisterComponent{
           Swal.fire('Felicidades!', 'Usuario creado con exito', 'success')
           this.router.navigateByUrl('/auth/login')
         } else {
-          Swal.fire('Opss!', res.mensaje, 'error')
+          Swal.fire('Opss!', res.mensaje!, 'error')
         }
         this.cargando = false;
       });
@@ -53,5 +53,9 @@ export class RegisterComponent{
     (this.miFormulario.get('password')?.value === this.miFormulario.get('password2')?.value)
       ? this.miFormulario.get('password2')?.setErrors(null)
       : this.miFormulario.get('password2')?.setErrors({ noEsIgual: true });
+  }
+
+  verificarCampo(campo:string){
+    return this.miFormulario.get(campo)?.errors && this.miFormulario.get(campo)?.touched;
   }
 }

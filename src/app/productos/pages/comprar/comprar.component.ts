@@ -20,7 +20,7 @@ export class ComprarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.productoService.listarProductos()
       .subscribe(resp => {
-        this.productos = resp.productos;
+        this.productos = resp.productos!;
       });
     if(localStorage.getItem('arregloCompras')){
       this.arregloCompras = JSON.parse ( localStorage.getItem('arregloCompras')! );

@@ -58,13 +58,13 @@ export class EditarComponent {
       .subscribe(resp => {
         if (resp.ok) {
           Swal.fire('Exito!', `Usuario ${this.usuario.nombre} editado con exito`, 'success');
-          const { id, name, username, image, roles, email } = resp.usuario;
-          this.usuario.id = id; this.usuario.usuario = username; this.usuario.nombre = name;
-          this.usuario.imagen = image; this.usuario.rol = roles; this.usuario.correo = email;
+          const { id, name, username, image, roles, email } = resp.usuario!;
+          this.usuario.id = id!; this.usuario.usuario = username!; this.usuario.nombre = name;
+          this.usuario.imagen = image!; this.usuario.rol = roles; this.usuario.correo = email;
           localStorage.setItem('usuario', JSON.stringify(this.usuario));
           this.router.navigate(['/productos/comprar']);
         } else {
-          Swal.fire('Error, ', resp.mensaje, 'error');
+          Swal.fire('Error, ', resp.mensaje!, 'error');
         }
         this.cargando = false;
       });

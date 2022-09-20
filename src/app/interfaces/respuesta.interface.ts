@@ -1,12 +1,29 @@
 
 export interface Dto {
     ok:        boolean;
-    mensaje:   string;
-    productos: Producto[];
-    producto:  null;
-    errores:   null;
+    mensaje:   string | null;
+    productos: Producto[] | null;
+    producto:  Producto | null;
+    errores:   string[] | null;
+    usuarios:  Usuario[] | null;
+    usuario:   Usuario | null;
+    pedidos:   Pedido[] | null;
+    pedido:    Pedido | null;
 }
 
+export interface Pedido{
+    id:          string;
+    usuarioId:   string;
+    listaCompra: Lc;
+    fechaCompra: Date;
+    total:       number;
+    status:      boolean;
+}
+export interface Lc{
+    idProducto: string;
+    precio:     number;
+    cantidad:   number;
+}
 export interface Producto {
     id:          string;
     nombre:      string;
@@ -18,12 +35,12 @@ export interface Producto {
 }
 
 export interface Compra {
-    id: string;
-    cantidad: number;
-    foto: string;
-    precio: number;
-    nombre: string;
-    existentes:  number;
+    id:         string;
+    cantidad:   number;
+    foto:       string;
+    precio:     number;
+    nombre:     string;
+    existentes: number;
   }
 
   export interface CResponse {
@@ -50,14 +67,18 @@ export interface Compra {
 }
 
 export interface Token {
-    access_token: string;
-    token_type:   string;
-    expires_in:   number;
-    imagen:       string;
-    usuario:      string;
-    nombre:       string;
-    rol:          string[];
-    id:           string;
+    access_token:  string;
+    token_type:    string;
+    refresh_token: string;
+    expires_in:    number;
+    scope:         string;
+    imagen:        string;
+    usuario:       string;
+    id:            string;
+    nombre:        string;
+    rol:           string[];
+    email:         string;
+    jti:           string;
 }
 
 export interface Usuario {
@@ -72,11 +93,6 @@ export interface Usuario {
     enabled:  boolean;
     roles:    string[];
     idImage:  string | null;
-}
-
-export interface TokenError {
-    error:             string;
-    error_description: string;
 }
 
 export interface AuthUsuario {

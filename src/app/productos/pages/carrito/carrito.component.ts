@@ -4,7 +4,7 @@ import { Compra } from '../../../interfaces/respuesta.interface';
 import { ProductosService } from '../../service/productos.service';
 import { AuthService } from '../../../auth/service/auth.service';
 export interface Comprar {
-  id: string;
+  idProducto: string;
   cantidad: number;
 }
 @Component({
@@ -47,17 +47,17 @@ export class CarritoComponent implements OnInit, OnDestroy {
   comprar() {
     this.cargando = true;
     this.compras.forEach(({ id, cantidad }) => {
-      this.realizarCompra.push({ id, cantidad: (cantidad * -1) });
+      this.realizarCompra.push({ idProducto:id, cantidad: (cantidad * -1) });
     });
     this.ps.comprarProductos(this.usuario.id,this.realizarCompra)
       .subscribe(response => {
         if (response.ok) {
           localStorage.removeItem('arregloCompras');
           this.compras = [];
-          Swal.fire('Compra exitosa!', response.mensaje, 'success');
+          Swal.fire('Compra exitosa!', response.mensaje!, 'success');
         }
         else {
-          Swal.fire('Error, ', response.mensaje, 'error');
+          Swal.fire('Error, ', response.mensaje!, 'error');
         }
         this.cargando = false;
       });
