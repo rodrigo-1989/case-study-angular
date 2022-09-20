@@ -41,7 +41,6 @@ export class InterceptorService implements HttpInterceptor {
     );
   }
   manejarError(error: any) {
-    console.log('ERRRRRR=>', error)
     let err = 'Algo salio mal en el servidor, contactar al Administrador por favor';
     if (error.status === 0) err = 'El servidor no esta en linea, contactar al Administrador por favor';
     if (error.status === 400) {
@@ -55,8 +54,10 @@ export class InterceptorService implements HttpInterceptor {
     Swal.fire({
       title: 'Opsss!', text: err, icon: 'error', confirmButtonColor: '#3085d6', confirmButtonText: 'Ok'
     }).then((result) => {
-      if (result.isConfirmed)
+      if (result.isConfirmed){
+        localStorage.clear();
         window.location.reload();
+      }
     });
     return throwError(error.message);
   }

@@ -10,10 +10,11 @@
             Cancelar comprar <mat-icon mat-list-icon>delete_forever</mat-icon>
         </button>
     </div>
+    <mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>
+    <br>
     <div class="animate__animated animate__rubberBand row col-xl-2 col-lg-3 col-md-4 col-sm-5 col-xs-6 mb-4"
         *ngFor="let compra of compras">
         <app-tarjeta-carrito [cargando]="cargando" [compra]="compra" (onIdBorrar)="borrarCompra( $event )"
             (onCambiarCantidad)="cambiarCantidad( $event )"></app-tarjeta-carrito>
     </div>
-    <mat-progress-bar mode="indeterminate" *ngIf="cargando"></mat-progress-bar>
 </div>
