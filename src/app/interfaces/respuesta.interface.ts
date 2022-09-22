@@ -17,7 +17,7 @@ export interface Pedido{
     listaCompra: Lc;
     fechaCompra: Date;
     total:       number;
-    status:      boolean;
+    status:      string;
 }
 export interface Lc{
     idProducto: string;

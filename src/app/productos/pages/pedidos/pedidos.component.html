@@ -1,0 +1,24 @@
+<div class="container mt-5" *ngIf="pedidos.length > 0">
+    <mat-accordion class="example-headers-align" multi *ngFor="let pedido of pedidos">
+        <mat-expansion-panel class="sombra mb-3">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Pedido
+                </mat-panel-title>
+                <mat-panel-description>
+                    {{pedido.fechaCompra | date:'medium'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div appearance="fill">
+                <p class="text-warning"><span class="text-white">Estatus del pedido:</span> {{pedido.status}}</p>
+                <p class="text-warning"><span class="text-white">Total de la compra:</span> {{pedido.total}}</p>
+                <button mat-raised-button color="warn" (click)="cancelarPedido(pedido.id)"
+                    *ngIf="pedido.status === 'PENDIENTE'">Cancelar pedido<mat-icon>cancel_circle</mat-icon></button>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div class="container mt-5 sombra text-white text-center" *ngIf="pedidos.length === 0">
+    No tiene ningun pedido
+</div>

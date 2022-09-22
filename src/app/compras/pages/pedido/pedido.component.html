@@ -1,10 +1,11 @@
-<div class="container mt-5 ">
+<div class="container mt-5 " *ngIf="pedidos.length > 0">
     <table class="table table-dark table-striped sombra">
         <thead>
             <tr>
                 <th scope="col">Pedido N°</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Total</th>
+                <th scope="col">Estatus</th>
                 <th scope="col">Ver detalle</th>
                 <th scope="col">Marcar entrega</th>
             </tr>
@@ -14,9 +15,14 @@
                 <td>{{i+1}}</td>
                 <td>{{ pedido.fechaCompra | date:'medium'}}</td>
                 <td>{{ pedido.total }}</td>
+                <td>{{ pedido.status }}</td>
                 <td><button  mat-raised-button color="accent" (click)="verDetalle(pedido.id)">Ver</button></td>
-                <td><button  mat-raised-button color="warn" (click)="quitarPedido(pedido.id)">Entregar<mat-icon>check_circle</mat-icon></button></td>
+                <td><button  mat-raised-button color="warn" (click)="quitarPedido(pedido.id)" [disabled]="pedido.status !== 'PENDIENTE' ">Entregar<mat-icon>check_circle</mat-icon></button></td>
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="container mt-5 sombra text-white text-center" *ngIf="pedidos.length === 0">
+    No hay pedidos pendientes
 </div>

@@ -15,7 +15,7 @@ export class PedidoDetalladoComponent implements OnInit {
 
   constructor(private productoService: ProductosService, private idRoute: ActivatedRoute, private route: Router) { }
   usuario: Usuario = { id: '', name: '', username: '', password: '', email: '', image: '', intentos: 0, createAt: new Date(), roles: [], idImage: '', enabled: true }
-  pedido: Pedido = { id: '', usuarioId: '', fechaCompra: new Date(), total: 0, status: false, listaCompra: { idProducto: '', precio: 0, cantidad: 0 } }
+  pedido: Pedido = { id: '', usuarioId: '', fechaCompra: new Date(), total: 0, status: '', listaCompra: { idProducto: '', precio: 0, cantidad: 0 } }
   productos: Producto[] = [];
   ngOnInit(): void {
     if (this.idRoute.snapshot.paramMap.get('id'))

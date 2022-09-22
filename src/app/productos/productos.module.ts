@@ -10,6 +10,7 @@ import { TarjetaProductoComponent } from './components/tarjeta-producto/tarjeta-
 import { TarjetaCarritoComponent } from './components/tarjeta-carrito/tarjeta-carrito.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { PedidosComponent } from './pages/pedidos/pedidos.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
     CarritoComponent,
     TarjetaProductoComponent,
     TarjetaCarritoComponent,
-    HomeComponent
+    HomeComponent,
+    PedidosComponent
   ],
   imports: [
     CommonModule,
